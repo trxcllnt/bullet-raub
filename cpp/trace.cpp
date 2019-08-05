@@ -201,7 +201,7 @@ NAN_METHOD(Trace::newCtor) {
 		
 		REQ_OBJ_ARG(0, opts);
 		
-		if ( ! opts->Has(JS_STR("scene")) ) {
+		if ( ! opts->Has(Nan::GetCurrentContext(), JS_STR("scene")).ToChecked() ) {
 			return Nan::ThrowTypeError("Missing 'opts.scene' argument.");
 		}
 		
@@ -214,7 +214,8 @@ NAN_METHOD(Trace::newCtor) {
 		V8_VAR_OBJ owner = V8_VAR_OBJ::Cast(ownerVal);
 		Scene *scene = ObjectWrap::Unwrap<Scene>(owner);
 		
-		if ( ! (opts->Has(JS_STR("from")) && opts->Has(JS_STR("to")))) {
+		if ( ! (opts->Has(Nan::GetCurrentContext(), JS_STR("from")).ToChecked() &&
+				opts->Has(Nan::GetCurrentContext(), JS_STR("to")).ToChecked())) {
 			return Nan::ThrowTypeError("Missing 'opts.from' or 'opts.to' argument.");
 		}
 		

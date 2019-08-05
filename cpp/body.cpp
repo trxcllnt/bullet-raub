@@ -592,7 +592,7 @@ NAN_METHOD(Body::newCtor) {
 	
 	REQ_OBJ_ARG(0, opts);
 	
-	if ( ! opts->Has(JS_STR("scene")) ) {
+	if ( ! opts->Has(Nan::GetCurrentContext(), JS_STR("scene")).ToChecked() ) {
 		return Nan::ThrowTypeError("Missing 'opts.scene' argument.");
 	}
 	

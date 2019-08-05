@@ -35,28 +35,28 @@
 
 #define OBJ_TO_VEC3(OBJ, NAME)                                                \
 	btVector3 NAME;                                                           \
-	if (OBJ->Has(JS_STR("x"))) {                                              \
-		NAME.setX(static_cast<float>(OBJ->Get(JS_STR("x"))->NumberValue()));  \
-		NAME.setY(static_cast<float>(OBJ->Get(JS_STR("y"))->NumberValue()));  \
-		NAME.setZ(static_cast<float>(OBJ->Get(JS_STR("z"))->NumberValue()));  \
+	if (OBJ->Has(Nan::GetCurrentContext(), JS_STR("x")).ToChecked()) {        \
+		NAME.setX(Nan::To<double>(OBJ->Get(JS_STR("x"))).FromJust());         \
+		NAME.setY(Nan::To<double>(OBJ->Get(JS_STR("y"))).FromJust());         \
+		NAME.setZ(Nan::To<double>(OBJ->Get(JS_STR("z"))).FromJust());         \
 	} else {                                                                  \
-		NAME.setX(static_cast<float>(OBJ->Get(0)->NumberValue()));            \
-		NAME.setY(static_cast<float>(OBJ->Get(1)->NumberValue()));            \
-		NAME.setZ(static_cast<float>(OBJ->Get(2)->NumberValue()));            \
+		NAME.setX(Nan::To<double>(OBJ->Get(0)).FromJust());                   \
+		NAME.setY(Nan::To<double>(OBJ->Get(1)).FromJust());                   \
+		NAME.setZ(Nan::To<double>(OBJ->Get(2)).FromJust());                   \
 	}
 
 #define OBJ_TO_QUAT(OBJ, NAME)                                                \
 	btQuaternion NAME;                                                        \
-	if (OBJ->Has(JS_STR("x"))) {                                              \
-		NAME.setX(static_cast<float>(OBJ->Get(JS_STR("x"))->NumberValue()));  \
-		NAME.setY(static_cast<float>(OBJ->Get(JS_STR("y"))->NumberValue()));  \
-		NAME.setZ(static_cast<float>(OBJ->Get(JS_STR("z"))->NumberValue()));  \
-		NAME.setW(static_cast<float>(OBJ->Get(JS_STR("w"))->NumberValue()));  \
+	if (OBJ->Has(Nan::GetCurrentContext(), JS_STR("x")).ToChecked()) {        \
+		NAME.setX(Nan::To<double>(OBJ->Get(JS_STR("x"))).FromJust());         \
+		NAME.setY(Nan::To<double>(OBJ->Get(JS_STR("y"))).FromJust());         \
+		NAME.setZ(Nan::To<double>(OBJ->Get(JS_STR("z"))).FromJust());         \
+		NAME.setW(Nan::To<double>(OBJ->Get(JS_STR("w"))).FromJust());         \
 	} else {                                                                  \
-		NAME.setX(static_cast<float>(OBJ->Get(0)->NumberValue()));            \
-		NAME.setY(static_cast<float>(OBJ->Get(1)->NumberValue()));            \
-		NAME.setZ(static_cast<float>(OBJ->Get(2)->NumberValue()));            \
-		NAME.setW(static_cast<float>(OBJ->Get(3)->NumberValue()));            \
+		NAME.setX(Nan::To<double>(OBJ->Get(0)).FromJust());                   \
+		NAME.setY(Nan::To<double>(OBJ->Get(1)).FromJust());                   \
+		NAME.setZ(Nan::To<double>(OBJ->Get(2)).FromJust());                   \
+		NAME.setW(Nan::To<double>(OBJ->Get(3)).FromJust());                   \
 	}
 
 
